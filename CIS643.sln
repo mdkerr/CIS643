@@ -1,9 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Controller", "Controller\Controller.vcxproj", "{770EAD9B-58E8-4C33-AD44-857D50DBCCDF}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SonarManager", "SonarManager\SonarManager.vcxproj", "{E5E7CC6E-1014-4F60-9BE6-B21A9F2BFF4C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KinectSonarRobot", "KinectSonarRobot\KinectSonarRobot.vcxproj", "{75EFFDDD-C775-448F-9F9E-360F519D625C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,14 +9,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{770EAD9B-58E8-4C33-AD44-857D50DBCCDF}.Debug|Win32.ActiveCfg = Debug|Win32
-		{770EAD9B-58E8-4C33-AD44-857D50DBCCDF}.Debug|Win32.Build.0 = Debug|Win32
-		{770EAD9B-58E8-4C33-AD44-857D50DBCCDF}.Release|Win32.ActiveCfg = Release|Win32
-		{770EAD9B-58E8-4C33-AD44-857D50DBCCDF}.Release|Win32.Build.0 = Release|Win32
-		{E5E7CC6E-1014-4F60-9BE6-B21A9F2BFF4C}.Debug|Win32.ActiveCfg = Debug|Win32
-		{E5E7CC6E-1014-4F60-9BE6-B21A9F2BFF4C}.Debug|Win32.Build.0 = Debug|Win32
-		{E5E7CC6E-1014-4F60-9BE6-B21A9F2BFF4C}.Release|Win32.ActiveCfg = Release|Win32
-		{E5E7CC6E-1014-4F60-9BE6-B21A9F2BFF4C}.Release|Win32.Build.0 = Release|Win32
+		{75EFFDDD-C775-448F-9F9E-360F519D625C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{75EFFDDD-C775-448F-9F9E-360F519D625C}.Debug|Win32.Build.0 = Debug|Win32
+		{75EFFDDD-C775-448F-9F9E-360F519D625C}.Release|Win32.ActiveCfg = Release|Win32
+		{75EFFDDD-C775-448F-9F9E-360F519D625C}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
