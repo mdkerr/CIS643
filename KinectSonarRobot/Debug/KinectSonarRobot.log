@@ -1,0 +1,17 @@
+﻿生成启动时间为 2014/1/30 11:09:15。
+     1>项目“C:\Github\CIS643\KinectSonarRobot\KinectSonarRobot.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt KinectSensor.cpp Logic.cpp Main.cpp Sonar.cpp
+         Sonar.cpp
+     1>c:\github\cis643\kinectsonarrobot\sonar.h(3): fatal error C1083: 无法打开包括文件:“Aria.h”: No such file or directory
+         Main.cpp
+     1>c:\github\cis643\kinectsonarrobot\main.cpp(26): fatal error C1083: 无法打开包括文件:“Aria.h”: No such file or directory
+         Logic.cpp
+         KinectSensor.cpp
+     1>c:\github\cis643\kinectsonarrobot\kinectsensor.h(7): fatal error C1083: 无法打开包括文件:“NuiApi.h”: No such file or directory
+         正在生成代码...
+     1>已完成生成项目“C:\Github\CIS643\KinectSonarRobot\KinectSonarRobot.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:05.78
