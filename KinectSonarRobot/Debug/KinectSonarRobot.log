@@ -1,17 +1,46 @@
-﻿生成启动时间为 2014/1/30 11:09:15。
-     1>项目“C:\Github\CIS643\KinectSonarRobot\KinectSonarRobot.vcxproj”在节点 2 上(Build 个目标)。
+﻿Build started 2014/2/6 10:32:03.
+     1>Project "C:\Github\CIS643\KinectSonarRobot\KinectSonarRobot.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt KinectSensor.cpp Logic.cpp Main.cpp Sonar.cpp
-         Sonar.cpp
-     1>c:\github\cis643\kinectsonarrobot\sonar.h(3): fatal error C1083: 无法打开包括文件:“Aria.h”: No such file or directory
-         Main.cpp
-     1>c:\github\cis643\kinectsonarrobot\main.cpp(26): fatal error C1083: 无法打开包括文件:“Aria.h”: No such file or directory
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Logic.cpp
          Logic.cpp
-         KinectSensor.cpp
-     1>c:\github\cis643\kinectsonarrobot\kinectsensor.h(7): fatal error C1083: 无法打开包括文件:“NuiApi.h”: No such file or directory
-         正在生成代码...
-     1>已完成生成项目“C:\Github\CIS643\KinectSonarRobot\KinectSonarRobot.vcxproj”(Build 个目标)的操作 - 失败。
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Github\CIS643\Debug\KinectSonarRobot.exe" /INCREMENTAL /NOLOGO kinect10.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Github\CIS643\Debug\KinectSonarRobot.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Github\CIS643\Debug\KinectSonarRobot.lib" /MACHINE:X86 Debug\KinectSensor.obj
+         Debug\Logic.obj
+         Debug\Main.obj
+         Debug\Sonar.obj
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: static void __cdecl ArLog::log(enum ArLog::LogLevel,char const *,...)" (__imp_?log@ArLog@@SAXW4LogLevel@1@PBDZZ) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall ArArgumentParser::ArArgumentParser(int *,char * *)" (__imp_??0ArArgumentParser@@QAE@PAHPAPAD@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall ArArgumentParser::~ArArgumentParser(void)" (__imp_??1ArArgumentParser@@QAE@XZ) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall ArArgumentParser::loadDefaultArguments(int)" (__imp_?loadDefaultArguments@ArArgumentParser@@QAEXH@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: bool __thiscall ArArgumentParser::checkHelpAndWarnUnparsed(unsigned int)" (__imp_?checkHelpAndWarnUnparsed@ArArgumentParser@@QAE_NI@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: static void __cdecl ArUtil::sleep(unsigned int)" (__imp_?sleep@ArUtil@@SAXI@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall ArRobotConnector::ArRobotConnector(class ArArgumentParser *,class ArRobot *,bool)" (__imp_??0ArRobotConnector@@QAE@PAVArArgumentParser@@PAVArRobot@@_N@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall ArRobotConnector::~ArRobotConnector(void)" (__imp_??1ArRobotConnector@@QAE@XZ) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: bool __thiscall ArRobotConnector::connectRobot(void)" (__imp_?connectRobot@ArRobotConnector@@QAE_NXZ) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall ArKeyHandler::ArKeyHandler(bool,bool,struct _iobuf *,bool)" (__imp_??0ArKeyHandler@@QAE@_N0PAU_iobuf@@0@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall ArKeyHandler::~ArKeyHandler(void)" (__imp_??1ArKeyHandler@@QAE@XZ) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall ArRobot::ArRobot(char const *,bool,bool,bool,bool)" (__imp_??0ArRobot@@QAE@PBD_N111@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall ArRobot::~ArRobot(void)" (__imp_??1ArRobot@@QAE@XZ) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall ArRobot::runAsync(bool)" (__imp_?runAsync@ArRobot@@QAEX_N@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: bool __thiscall ArRobot::isConnected(void)const " (__imp_?isConnected@ArRobot@@QBE_NXZ) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall ArRobot::move(double)" (__imp_?move@ArRobot@@QAEXN@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: bool __thiscall ArRobot::comInt(unsigned char,short)" (__imp_?comInt@ArRobot@@QAE_NEF@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: enum ArRobot::WaitState __thiscall ArRobot::waitForRunExit(unsigned int)" (__imp_?waitForRunExit@ArRobot@@QAE?AW4WaitState@1@I@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall ArRobot::attachKeyHandler(class ArKeyHandler *,bool,bool)" (__imp_?attachKeyHandler@ArRobot@@QAEXPAVArKeyHandler@@_N1@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: static void __cdecl Aria::init(enum Aria::SigHandleMethod,bool,bool)" (__imp_?init@Aria@@SAXW4SigHandleMethod@1@_N1@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: static void __cdecl Aria::exit(int)" (__imp_?exit@Aria@@SAXH@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: static bool __cdecl Aria::parseArgs(void)" (__imp_?parseArgs@Aria@@SA_NXZ) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: static void __cdecl Aria::logOptions(void)" (__imp_?logOptions@Aria@@SAXXZ) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: static void __cdecl Aria::setKeyHandler(class ArKeyHandler *)" (__imp_?setKeyHandler@Aria@@SAXPAVArKeyHandler@@@Z) referenced in function _main
+     1>Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: virtual __thiscall ArSonarDevice::~ArSonarDevice(void)" (__imp_??1ArSonarDevice@@UAE@XZ) referenced in function "public: __thiscall Sonar::~Sonar(void)" (??1Sonar@@QAE@XZ)
+     1>Sonar.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall ArRobot::enableSonar(void)" (__imp_?enableSonar@ArRobot@@QAEXXZ) referenced in function "public: bool __thiscall Sonar::init(class ArRobot *)" (?init@Sonar@@QAE_NPAVArRobot@@@Z)
+     1>Sonar.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: class ArSensorReading * __thiscall ArRobot::getSonarReading(int)const " (__imp_?getSonarReading@ArRobot@@QBEPAVArSensorReading@@H@Z) referenced in function "public: unsigned int * __thiscall Sonar::detect(void)" (?detect@Sonar@@QAEPAIXZ)
+     1>Sonar.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: int __thiscall ArRobot::getClosestSonarRange(double,double)const " (__imp_?getClosestSonarRange@ArRobot@@QBEHNN@Z) referenced in function "public: bool __thiscall Sonar::checkFront(void)" (?checkFront@Sonar@@QAE_NXZ)
+     1>Sonar.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall ArRobot::addRangeDevice(class ArRangeDevice *)" (__imp_?addRangeDevice@ArRobot@@QAEXPAVArRangeDevice@@@Z) referenced in function "public: bool __thiscall Sonar::init(class ArRobot *)" (?init@Sonar@@QAE_NPAVArRobot@@@Z)
+     1>Sonar.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall ArSonarDevice::ArSonarDevice(unsigned int,unsigned int,char const *)" (__imp_??0ArSonarDevice@@QAE@IIPBD@Z) referenced in function "public: __thiscall Sonar::Sonar(int,int)" (??0Sonar@@QAE@HH@Z)
+     1>C:\Github\CIS643\Debug\KinectSonarRobot.exe : fatal error LNK1120: 30 unresolved externals
+     1>Done Building Project "C:\Github\CIS643\KinectSonarRobot\KinectSonarRobot.vcxproj" (Build target(s)) -- FAILED.
 
-生成失败。
+Build FAILED.
 
-已用时间 00:00:05.78
+Time Elapsed 00:00:00.41
