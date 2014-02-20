@@ -10,9 +10,17 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\KinectSensor\KinectSensor.cpp" />
+    <ClCompile Include="demo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\KinectSensor\KinectSensor.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8EE3F7FE-D27A-48E6-B634-D77B329CE772}</ProjectGuid>
     <RootNamespace>KinectSonarRobot</RootNamespace>
+    <ProjectName>Robot</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -43,12 +51,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Program Files\MobileRobots\Aria\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(KINECTSDK10_DIR)\inc;C:\Program Files\MobileRobots\Aria\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files\MobileRobots\Aria\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>AriaDebugVC10.lib;ArNetworkingDebugVC10.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(KINECTSDK10_DIR)\lib\x86;C:\Program Files\MobileRobots\Aria\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>AriaDebugVC10.lib;ArNetworkingDebugVC10.lib;Kinect10.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <PerUserRedirection>true</PerUserRedirection>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -64,9 +73,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="demo.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

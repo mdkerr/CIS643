@@ -13,10 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Kinect Reference">
+      <UniqueIdentifier>{d9e9f4ab-116d-469c-b7f8-42b4d600a43a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\KinectSensor\KinectSensor.cpp">
+      <Filter>Kinect Reference</Filter>
+    </ClCompile>
     <ClCompile Include="demo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\KinectSensor\KinectSensor.h">
+      <Filter>Kinect Reference</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
