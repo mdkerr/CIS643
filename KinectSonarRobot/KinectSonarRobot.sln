@@ -1,9 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KinectSonarRobot", "KinectSonarRobot\KinectSonarRobot.vcxproj", "{8EE3F7FE-D27A-48E6-B634-D77B329CE772}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KinectSensor", "KinectSensor\KinectSensor.vcxproj", "{93409499-C4A1-4B66-8E43-93E2D938C156}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Robot", "KinectSonarRobot\KinectSonarRobot.vcxproj", "{8EE3F7FE-D27A-48E6-B634-D77B329CE772}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +13,6 @@ Global
 		{8EE3F7FE-D27A-48E6-B634-D77B329CE772}.Debug|Win32.Build.0 = Debug|Win32
 		{8EE3F7FE-D27A-48E6-B634-D77B329CE772}.Release|Win32.ActiveCfg = Release|Win32
 		{8EE3F7FE-D27A-48E6-B634-D77B329CE772}.Release|Win32.Build.0 = Release|Win32
-		{93409499-C4A1-4B66-8E43-93E2D938C156}.Debug|Win32.ActiveCfg = Debug|Win32
-		{93409499-C4A1-4B66-8E43-93E2D938C156}.Debug|Win32.Build.0 = Debug|Win32
-		{93409499-C4A1-4B66-8E43-93E2D938C156}.Release|Win32.ActiveCfg = Release|Win32
-		{93409499-C4A1-4B66-8E43-93E2D938C156}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

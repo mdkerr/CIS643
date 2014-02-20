@@ -11,11 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\KinectSensor\KinectSensor.cpp" />
-    <ClCompile Include="demo.cpp" />
+    <ClCompile Include="KinectSensor.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Sonar.cpp" />
+    <ClCompile Include="TestKinectSensor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\KinectSensor\KinectSensor.h" />
+    <ClInclude Include="KinectSensor.h" />
+    <ClInclude Include="Sonar.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8EE3F7FE-D27A-48E6-B634-D77B329CE772}</ProjectGuid>
