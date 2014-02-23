@@ -11,14 +11,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AI.cpp" />
+    <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="KinectSensor.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Sonar.cpp" />
+    <ClCompile Include="RobotController.cpp" />
     <ClCompile Include="TestKinectSensor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AI.h" />
+    <ClInclude Include="DataManager.h" />
     <ClInclude Include="KinectSensor.h" />
-    <ClInclude Include="Sonar.h" />
+    <ClInclude Include="RobotController.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8EE3F7FE-D27A-48E6-B634-D77B329CE772}</ProjectGuid>
