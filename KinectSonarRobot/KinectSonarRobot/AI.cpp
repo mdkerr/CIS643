@@ -11,6 +11,7 @@ AI::AI(int argc, char** argv)
 void AI::start()
 {
 	boolean obstruction;
+	maneuver = false;
 	//temporary
 	while(true)
 	{
@@ -18,8 +19,22 @@ void AI::start()
 
 		if(!obstruction)
 		{
-			rc.moveForward(10);
+			rc.moveForward(75);
 		}
+		else
+		{
+			
+			if(maneuver)
+			{
+				rc.moveTurn(90);
+			}
+			else
+			{
+				rc.moveTurn(0);
+			}
+			maneuver = !maneuver;
+		}
+		
 	}
   
 	// Block execution of the main thread here and wait for the robot's task loop

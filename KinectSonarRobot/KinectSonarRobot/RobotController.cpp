@@ -6,7 +6,7 @@ Creates an instance of RobotController
 */
 RobotController::RobotController()
 {
-    this->sonarAvoidDistance = 250;
+    this->sonarAvoidDistance = 375;
     this->sonarAvoidAngle = 15;
 }
 
@@ -21,7 +21,6 @@ boolean RobotController::init(int argc, char** argv)
 	// This object parses program options from the command line
 	ArArgumentParser parser(&argc, argv);
 
-	// Load some default values for command line arguments from /etc/Aria.args
 	// (Linux) or the ARIAARGS environment variable.
 	parser.loadDefaultArguments();
 	
@@ -104,8 +103,15 @@ boolean RobotController::moveTurn(double angle)
 	//make sure robot is connected and it is not currently changing heading
 	if(robot.isConnected() && robot.isHeadingDone())
 	{
-		robot.setHeading(currentHeading + angle);
+		cout << "TURN STARTED" << endl;
+		robot.setHeading(angle);
+		while( !robot.isHeadingDone() )
+		{
+			Sleep(10);
+		}
+		cout << "TURN ENDED" << endl;
 		return true;
+		
 	}
 
 	return false;

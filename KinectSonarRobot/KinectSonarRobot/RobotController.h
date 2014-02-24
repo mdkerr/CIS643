@@ -3,6 +3,9 @@
 #include "Aria.h"
 #include "ArRobot.h"
 #include "ArActionAvoidFront.h"
+#include <iostream>
+
+using namespace std;
 
 class RobotController
 {

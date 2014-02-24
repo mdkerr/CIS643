@@ -14,4 +14,5 @@ class AI
 	private:
 		RobotController rc;
 		DataManager		dm;
+		boolean			maneuver;
 };
