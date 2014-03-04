@@ -6,15 +6,6 @@
 #include <tuple>
 #include "NuiApi.h"
 
-/// <summary>
-/// Represents a single obstacle detected by the Kinect
-/// </summary>
-struct ObstacleData {
-	float depth;
-	float leftSide;
-	float rightSide;
-};
-
 class KinectSensor
 {
 
@@ -44,15 +35,17 @@ public:
     /// *EXPERIMENTAL* Gets positions of potential obstacles from the Kinect
 	/// Returns a pointer to an array
     /// </summary>
-	boolean GetObstacleData(const ObstacleData *, int *);
+	boolean GetObstacleData(Vector4 *, int *);
 
 private:
-    INuiSensor *		nuiSensor;
-	INuiFrameTexture *	depthTextureInterface;
-    HANDLE				depthStreamHandle;
-	NUI_IMAGE_FRAME	*	imageFrame;
-    //HANDLE				m_hNextDepthFrameEvent;
+    INuiSensor *			nuiSensor;
+	INuiFrameTexture *		depthTextureInterface;
+    HANDLE					depthStreamHandle;
+	NUI_IMAGE_FRAME	*		imageFrame;
+	Vector4 *				localObstacleData;
 
-	boolean				GetAndLockDepthData(NUI_LOCKED_RECT *);
-	void				ReleaseDepthData(void); 
+	boolean					GetAndLockDepthData(NUI_LOCKED_RECT *);
+	void					ReleaseDepthData(void); 
+	Vector4					DepthToSkeletonPos(int, int, NUI_LOCKED_RECT *);
+	USHORT					GetDepthAt(int, int, NUI_LOCKED_RECT *);
 };

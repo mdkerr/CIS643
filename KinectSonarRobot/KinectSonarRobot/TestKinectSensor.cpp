@@ -7,7 +7,7 @@
 using namespace std;
 
 
-int mainA()
+int mainDisabled()
 {
 	KinectSensor kinect;
 
@@ -22,31 +22,25 @@ int mainA()
 	
 	cout << endl << "Kinect connected" << endl;
 
-	boolean obstaclesDetected;
-
 	while(true)
 	{
-		//test center detect
-		if(kinect.CenterDetect(&obstaclesDetected))
-		{
-			cout << (obstaclesDetected ? "Obstructed" : "Clear") << endl;
-		}
-		else
-		{
-			cout << "Center detection failed" << endl;
-		}
+		Vector4*	obstacleData = NULL;
+		int			obstacleDataSize;
 
-		/*
 		//function isn't using out values yet, so just use null
-		if(kinect.GetObstacleData(NULL, NULL))
+		if(kinect.GetObstacleData(obstacleData, &obstacleDataSize))
 		{
-			//do nothing and let it print debug/testing data from inside function
+			for(int i = 0; i < obstacleDataSize; i+=30)
+			{
+				//cout << (int) obstacleData[i].z << " ";
+			}
+			//cout << endl;
 		}
 		else
 		{
-			cout << "Kinect detection failed" << endl;
+			cout << "Kinect detection failed!" << endl;
 		}
-		*/
+		
 
 		cout << "\nPress enter to run again\n";
 		cin.get();

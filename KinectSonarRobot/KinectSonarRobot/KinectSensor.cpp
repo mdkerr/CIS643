@@ -6,6 +6,8 @@
 #include <iostream>
 using namespace std;
 
+#define NUM_POINTS 160
+
 /// <summary>
 /// Constructor
 /// </summary>
@@ -15,6 +17,86 @@ KinectSensor::KinectSensor()
 	nuiSensor = NULL;
 	depthTextureInterface = NULL;
 	imageFrame = new NUI_IMAGE_FRAME();
+	localObstacleData = new Vector4[NUM_POINTS];
+}
+
+/// <summary>
+/// Sets the argument to true if there are obstacles close to the Kinect, otherwise false
+/// Return value is whether or not the detection was valid (false if an error is encountered)
+/// </summary>
+boolean KinectSensor::CenterDetect(boolean* obstacles)
+{
+	NUI_LOCKED_RECT depthData;
+
+	//get depth data
+	if(!GetAndLockDepthData(&depthData))
+	{
+		//something went wrong when getting depth data, so return false to show that the data is invalid
+		return false;
+	}
+
+	//get the pixel at the center of the image
+	NUI_DEPTH_IMAGE_PIXEL * centerPixel = ((NUI_DEPTH_IMAGE_PIXEL*) (depthData.pBits)) + 640 * 240 + 320;
+	
+	
+	Vector4 skeletonCord = NuiTransformDepthImageToSkeleton(
+		320,
+		240,
+		centerPixel->depth << 3,
+		NUI_IMAGE_RESOLUTION_640x480
+		);
+
+	cout << "d: " << centerPixel->depth << endl;
+	cout << "x: " << skeletonCord.x << endl;
+	cout << "y: " << skeletonCord.y << endl;
+	cout << "z: " << skeletonCord.z << endl;
+
+	//check for obstacles
+	*obstacles = centerPixel->depth < 500;
+
+	ReleaseDepthData();
+
+	//return true since the function completed without errors
+	return true;
+}
+
+/// <summary>
+/// Returns a dynamically sized array of Vector4s which represent the coordinates of the pixels
+/// in the Kinect's depth image along the center horizontal line.
+/// </summary>
+boolean KinectSensor::GetObstacleData(Vector4 * obstacleData, int * obstacleDataSize)
+{
+	NUI_LOCKED_RECT depthData;
+
+	//get depth data
+	if(!GetAndLockDepthData(&depthData))
+	{
+		//something went wrong when getting depth data, so return false to show that the data is invalid
+		return false;
+	}
+
+	*obstacleDataSize = NUM_POINTS;
+	obstacleData = localObstacleData;
+	ReleaseDepthData();
+
+	//return true since the function completed without errors
+	return true;
+}
+
+Vector4 KinectSensor::DepthToSkeletonPos(int x, int y, NUI_LOCKED_RECT * depthImage)
+{
+	 return NuiTransformDepthImageToSkeleton(
+				x,
+				y,
+				GetDepthAt(x, y, depthImage) << 3,
+				NUI_IMAGE_RESOLUTION_640x480
+				);
+}
+
+USHORT KinectSensor::GetDepthAt(int x, int y, NUI_LOCKED_RECT * depthImage)
+{
+	int offset = 640 * y + x;
+	return (((NUI_DEPTH_IMAGE_PIXEL*) (depthImage->pBits)) + offset)->depth;
 }
 
 /// <summary>
@@ -30,10 +112,7 @@ KinectSensor::~KinectSensor()
 		nuiSensor->Release();
     }
 
-    //if (m_hNextDepthFrameEvent != INVALID_HANDLE_VALUE)
-    //{
-    //    CloseHandle(m_hNextDepthFrameEvent);
-    //}
+	delete localObstacleData;
 }
 
 /// <summary>
@@ -89,105 +168,6 @@ boolean KinectSensor::Connect(void)
 	//since initialization completed successfully, we will use this sensor and return true
 	nuiSensor = tempNuiSensor;
     return true;
-}
-
-/// <summary>
-/// Sets the argument to true if there are obstacles close to the Kinect, otherwise false
-/// Return value is whether or not the detection was valid (false if an error is encountered)
-/// </summary>
-boolean KinectSensor::CenterDetect(boolean* obstacles)
-{
-	NUI_LOCKED_RECT depthData;
-
-	//get depth data
-	if(!GetAndLockDepthData(&depthData))
-	{
-		//something went wrong when getting depth data, so return false to show that the data is invalid
-		return false;
-	}
-
-	//get the pixel at the center of the image
-	NUI_DEPTH_IMAGE_PIXEL * centerPixel = ((NUI_DEPTH_IMAGE_PIXEL*) (depthData.pBits)) + 640 * 240 + 320;
-	
-	//debug
-	cout << centerPixel->depth;
-
-	//check for obstacles
-	*obstacles = centerPixel->depth < 500;
-
-	ReleaseDepthData();
-
-	//return true since the function completed without errors
-	return true;
-}
-
-//EXPERIMENTAL
-boolean KinectSensor::GetObstacleData(const ObstacleData * obstacleData, int * obstacleDataSize)
-{
-	NUI_LOCKED_RECT depthData;
-
-	//try and get depth data
-	if(!GetAndLockDepthData(&depthData))
-	{
-		return false;
-	}
-
-	cout << "-----------------------" << endl;
-
-	//start at top left of image
-	NUI_DEPTH_IMAGE_PIXEL * currentPixel = (NUI_DEPTH_IMAGE_PIXEL *) depthData.pBits;
-	NUI_DEPTH_IMAGE_PIXEL * pixelBoundary = currentPixel + 640 * 480;
-
-	//how many pixels to skip each iteration
-	int pixelStep = 50;
-	int offset = 0;
-
-	Vector4 pixelPosition;
-	while (currentPixel < pixelBoundary) {
-		pixelPosition = NuiTransformDepthImageToSkeleton(offset % 640, offset / 640, ((NUI_DEPTH_IMAGE_PIXEL *)(currentPixel))->depth, NUI_IMAGE_RESOLUTION_640x480);
-	
-		//print real coordinates of close objects
-		if(pixelPosition.z > 0 && pixelPosition.z < 300)
-		{
-			cout << pixelPosition.z << '/t' << pixelPosition.x << '/t' << pixelPosition.y << '/t' << pixelPosition.z << '/t' << pixelPosition.w << endl; //int( 100 * pixelPosition.x )/100
-		}
-
-		currentPixel += pixelStep;
-	}
-
-	/*
-	//print depths of images in the plane of the camera that are:
-	//	up to 6 ft away
-	//	from 0-1 ft below kinect reference point
-	//	within 1 ft horizontally from kinect reference point
-
-	cout << "--------------------------\n";
-	cout << endl << "Points inside limited area:" << endl << endl;
-
-	for(int row = 0; row < 640; row += rowStep)
-	{
-		for(int col = 0; col < 480; col += colStep)
-		{
-			currentPixel = (NUI_DEPTH_IMAGE_PIXEL*) depthData.pBits + row * 640 + col;
-			pixelPosition = NuiTransformDepthImageToSkeleton(row, col, currentPixel->depth, NUI_IMAGE_RESOLUTION_640x480);
-
-			if(	pixelPosition.z < 1800	&&
-				pixelPosition.y < 0		&& 
-				pixelPosition.y > -300	&& 
-				pixelPosition.x > -150	&&
-				pixelPosition.x < 150)
-			{
-				cout << currentPixel->depth << '/t' << pixelPosition.x << '/t' << pixelPosition.y << '/t' << pixelPosition.z << '/t' << pixelPosition.w << endl;
-			}
-		}
-		
-	}
-	*/
-	cout << endl << "------------------" << endl;
-
-	//return value doesn't mean anything, still testing function
-	ReleaseDepthData();
-	return true;
 }
 
 /// <summary>
