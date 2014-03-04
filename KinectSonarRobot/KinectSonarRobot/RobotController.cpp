@@ -7,7 +7,8 @@ Creates an instance of RobotController
 RobotController::RobotController()
 {
     this->sonarAvoidDistance = 375;
-    this->sonarAvoidAngle = 15;
+    this->sonarAvoidAngle = 10;
+	this->currentHeading = 0;
 }
 
 /*
@@ -95,7 +96,7 @@ boolean RobotController::moveForward(double distance)
 }
 
 /*
-Turns the robot by the specified angle (+90 is right, -90 is left)
+Turns the robot by the specified angle (+90 is right, -90 is left) with respect to the robots current direction
 returns TRUE if successful
 */
 boolean RobotController::moveTurn(double angle)
@@ -104,11 +105,15 @@ boolean RobotController::moveTurn(double angle)
 	if(robot.isConnected() && robot.isHeadingDone())
 	{
 		cout << "TURN STARTED" << endl;
-		robot.setHeading(angle);
+
+		currentHeading += angle;
+		robot.setHeading(currentHeading);
+
 		while( !robot.isHeadingDone() )
 		{
 			Sleep(10);
 		}
+
 		cout << "TURN ENDED" << endl;
 		return true;
 		
@@ -131,6 +136,7 @@ boolean RobotController::sonarDetectFront()
     //an object has not been detected
     return false;
 }
+
 
 /*
 Creates an array of distances, one for each sonar value that was read

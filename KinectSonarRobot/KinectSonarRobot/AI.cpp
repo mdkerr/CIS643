@@ -19,18 +19,17 @@ void AI::start()
 
 		if(!obstruction)
 		{
-			rc.moveForward(75);
+			rc.moveForward(20);
 		}
 		else
 		{
-			
 			if(maneuver)
 			{
 				rc.moveTurn(90);
 			}
 			else
 			{
-				rc.moveTurn(0);
+				rc.moveTurn(-90);
 			}
 			maneuver = !maneuver;
 		}
