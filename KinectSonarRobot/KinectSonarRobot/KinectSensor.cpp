@@ -66,13 +66,29 @@ boolean KinectSensor::CenterDetect(boolean* obstacles)
 /// </summary>
 boolean KinectSensor::GetObstacleData(Vector4 * obstacleData, int * obstacleDataSize)
 {
-	NUI_LOCKED_RECT depthData;
+		NUI_LOCKED_RECT depthData;
 
 	//get depth data
 	if(!GetAndLockDepthData(&depthData))
 	{
 		//something went wrong when getting depth data, so return false to show that the data is invalid
 		return false;
+	}
+
+	int leftBuffer = 8;
+	for(int i = 0; i < NUM_POINTS; i++)
+	{
+		double percentWidth = i / (double) (NUM_POINTS-1);
+		int totalWidth = (639 - leftBuffer);
+		int imgX = (int) (percentWidth * totalWidth + leftBuffer);
+
+		Vector4 skeletonCord = DepthToSkeletonPos( 
+			imgX, 
+			239, 
+			&depthData 
+			);
+
+		localObstacleData[i] = skeletonCord;
 	}
 
 	*obstacleDataSize = NUM_POINTS;
