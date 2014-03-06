@@ -11,27 +11,56 @@ AI::AI(int argc, char** argv)
 void AI::start()
 {
 	boolean obstruction;
+	double angle;
 	maneuver = false;
-	//temporary
+	
 	while(true)
 	{
+		if(rc.currentHeading == 0) maneuver = false;
+
+		if(maneuver)
+		{
+			//we need to go back to the left
+			if(rc.currentHeading > 0) angle = -90;
+			//we need to go back to the right
+			else angle = 90;
+				
+			if(!rc.sonarDetectAngle(angle))
+			{
+				rc.moveTurn(angle);
+				continue;
+			}
+		}
+
+		//detect
 		obstruction = dm.detectSimple();
 
+		//no detection
 		if(!obstruction)
 		{
 			rc.moveForward(20);
 		}
+		//detection
 		else
 		{
-			if(maneuver)
+			double angle;
+			maneuver = true;
+
+			//we need to go left
+			if(rc.currentHeading > 0) angle = -90;
+			//we need to go right
+			else angle = 90;
+
+			//try going the correct way first
+			if(!rc.sonarDetectAngle(angle))
 			{
-				rc.moveTurn(90);
+				rc.moveTurn(angle);
 			}
+			//if its not clear go the other way
 			else
 			{
-				rc.moveTurn(-90);
+				rc.moveTurn(-angle);
 			}
-			maneuver = !maneuver;
 		}
 		
 	}

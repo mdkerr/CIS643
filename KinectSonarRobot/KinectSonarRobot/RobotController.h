@@ -16,14 +16,15 @@ class RobotController
 		boolean			moveForward(double);
 		boolean			moveTurn(double);
         boolean			sonarDetectFront();
+		boolean			sonarDetectAngle(double angle);
 		unsigned int*	sonarDetect();
 
         int				sonarAvoidDistance;
-        int				sonarAvoidAngle;
+        double			sonarAvoidAngle;
+		double			currentHeading;
     
     private:
         ArRobot robot;
 		ArRobotConnector* robotConnector;
         ArSonarDevice sonar;
-		double currentHeading;
 };

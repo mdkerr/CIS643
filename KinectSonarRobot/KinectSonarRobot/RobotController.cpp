@@ -7,7 +7,7 @@ Creates an instance of RobotController
 RobotController::RobotController()
 {
     this->sonarAvoidDistance = 375;
-    this->sonarAvoidAngle = 10;
+    this->sonarAvoidAngle = 20;
 	this->currentHeading = 0;
 }
 
@@ -135,6 +135,22 @@ boolean RobotController::sonarDetectFront()
     if ((range > 0) && (range < sonarAvoidDistance)) return true;
     //an object has not been detected
     return false;
+}
+
+boolean RobotController::sonarDetectAngle(double angle)
+{
+	//define bounds of arc that will be checked for obstacles
+	double bound_a = angle - this->sonarAvoidAngle;
+	double bound_b = angle + this->sonarAvoidAngle;
+
+	//get closes detected object range within arc
+	int range = robot.getClosestSonarRange(bound_a, bound_b);
+
+	//an object ahs been detected
+	if((range > 0) && (range < sonarAvoidDistance * 2)) return true;
+
+	//an object has not been detected
+	return false;
 }
 
 
