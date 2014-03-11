@@ -64,7 +64,7 @@ boolean KinectSensor::CenterDetect(boolean* obstacles)
 /// Returns a dynamically sized array of Vector4s which represent the coordinates of the pixels
 /// in the Kinect's depth image along the center horizontal line.
 /// </summary>
-boolean KinectSensor::GetObstacleData(Vector4 * obstacleData, int * obstacleDataSize)
+boolean KinectSensor::GetObstacleData(Vector4 ** obstacleData, int * obstacleDataSize)
 {
 		NUI_LOCKED_RECT depthData;
 
@@ -92,7 +92,7 @@ boolean KinectSensor::GetObstacleData(Vector4 * obstacleData, int * obstacleData
 	}
 
 	*obstacleDataSize = NUM_POINTS;
-	obstacleData = localObstacleData;
+	*obstacleData = localObstacleData;
 	ReleaseDepthData();
 
 	//return true since the function completed without errors

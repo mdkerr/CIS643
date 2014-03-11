@@ -35,7 +35,7 @@ public:
     /// *EXPERIMENTAL* Gets positions of potential obstacles from the Kinect
 	/// Returns a pointer to an array
     /// </summary>
-	boolean GetObstacleData(Vector4 *, int *);
+	boolean GetObstacleData(Vector4 **, int *);
 
 private:
     INuiSensor *			nuiSensor;

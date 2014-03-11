@@ -33,7 +33,7 @@ void AI::start()
 		}
 
 		//detect
-		obstruction = dm.detectSimple();
+		obstruction = dm.detectCloseFront();
 
 		//no detection
 		if(!obstruction)

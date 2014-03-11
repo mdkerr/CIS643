@@ -6,7 +6,7 @@
 
 using namespace std;
 
-
+/*
 int mainDisabled()
 {
 	KinectSensor kinect;
@@ -47,3 +47,4 @@ int mainDisabled()
 	}
 }
 
+*/
