@@ -27,6 +27,7 @@ void AI::start()
 				
 			if(!rc.sonarDetectAngle(angle))
 			{
+				rc.moveForward(50);
 				rc.moveTurn(angle);
 				continue;
 			}
@@ -38,7 +39,7 @@ void AI::start()
 		//no detection
 		if(!obstruction)
 		{
-			rc.moveForward(20);
+			rc.moveForward(50);
 		}
 		//detection
 		else

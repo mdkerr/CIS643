@@ -6,7 +6,7 @@ Creates an instance of RobotController
 */
 RobotController::RobotController()
 {
-    this->sonarAvoidDistance = 375;
+    this->sonarAvoidDistance = 450;
     this->sonarAvoidAngle = 20;
 	this->currentHeading = 0;
 }
@@ -89,6 +89,11 @@ boolean RobotController::moveForward(double distance)
 	if(robot.isConnected())
 	{
 		robot.move(distance);
+
+		while( !robot.isMoveDone() )
+		{
+			Sleep(10);
+		}
 		return true;
 	}
 
@@ -101,12 +106,14 @@ returns TRUE if successful
 */
 boolean RobotController::moveTurn(double angle)
 {
+	static const double TURN_ERROR_ADJUSTMENT = 0.98;
+
 	//make sure robot is connected and it is not currently changing heading
 	if(robot.isConnected() && robot.isHeadingDone())
 	{
 		cout << "TURN STARTED" << endl;
 
-		currentHeading += angle;
+		currentHeading += angle * TURN_ERROR_ADJUSTMENT;
 		robot.setHeading(currentHeading);
 
 		while( !robot.isHeadingDone() )
@@ -173,3 +180,8 @@ unsigned int* RobotController::sonarDetect()
 
 	return distances;
 }
+
+//unsigned int RobotController::sonarDetect(int index)
+//{
+//	return robot.getSonarReading(index)->getRange();
+//}

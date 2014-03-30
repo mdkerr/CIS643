@@ -37,8 +37,8 @@ boolean DataManager::detectSimple()
 	//	cout << "Kinect detected obstacle" << endl;
 	//}
 
-	//return (sonarObstructed || kinectObstructed);
-	return sonarObstructed;
+	return (sonarObstructed || kinectObstructed);
+	//return sonarObstructed;
 }
 
 boolean DataManager::detectCloseFront()
@@ -75,10 +75,6 @@ boolean DataManager::detectCloseFront()
 	//check Sonar
 	sonarObstructed = rc->sonarDetectFront();
 
-	if(kinectObstructed)
-		cout << "KINECT DETECT" << endl;
-	else
-		cout <<"KINECT CLEAR" << endl;
-
-	return sonarObstructed || kinectObstructed;
+	//return sonarObstructed;// || kinectObstructed;
+	return kinectObstructed;
 }
