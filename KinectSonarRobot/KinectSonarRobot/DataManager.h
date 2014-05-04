@@ -13,6 +13,7 @@ class DataManager
 		boolean init(RobotController*);
 		boolean detectSimple();
 		boolean detectCloseFront();
+		boolean detectSide(boolean);
 	private:
 		RobotController* rc;
 		KinectSensor	 ks;

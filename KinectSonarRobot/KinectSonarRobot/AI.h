@@ -11,8 +11,13 @@ class AI
 	public:
 		AI(int, char**);
 		void start();
+		void goAround(boolean right);
+		void DestinationCheck();
+		void TurnTowardsTarget();
 	private:
 		RobotController rc;
 		DataManager		dm;
 		boolean			maneuver;
+
+		double			theta;
 };

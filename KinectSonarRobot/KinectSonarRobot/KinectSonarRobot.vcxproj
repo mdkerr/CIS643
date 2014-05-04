@@ -25,6 +25,7 @@
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="KinectSensor.h" />
     <ClInclude Include="RobotController.h" />
+    <ClInclude Include="testing.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8EE3F7FE-D27A-48E6-B634-D77B329CE772}</ProjectGuid>

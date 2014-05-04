@@ -13,15 +13,18 @@ class RobotController
         RobotController();
 
 		boolean			init(int argc, char** argv);
+		boolean			setHeading(double);
 		boolean			moveForward(double);
-		boolean			moveTurn(double);
+		boolean			moveTurn(boolean right);
         boolean			sonarDetectFront();
-		boolean			sonarDetectAngle(double angle);
+		boolean			sonarDetectSide(boolean right);
 		unsigned int*	sonarDetect();
 
-        int				sonarAvoidDistance;
-        double			sonarAvoidAngle;
 		double			currentHeading;
+		double			target_x;
+		double			target_y;
+		double			current_x;
+		double			current_y;
     
     private:
         ArRobot robot;
